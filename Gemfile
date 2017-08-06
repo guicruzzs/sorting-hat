@@ -9,8 +9,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails', '~> 4.3'
 
 gem 'devise', '~> 4.3'
+gem 'materialize-sass', '~> 0.100'
 
 group :development, :test do
   gem 'sqlite3'

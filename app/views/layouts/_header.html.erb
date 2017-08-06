@@ -1,0 +1,31 @@
+<ul id="user_dropdown" class="dropdown-content">
+  <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+</ul>
+
+<nav>
+  <div class="nav-wrapper">
+    <div class="col 4">
+      <a href="/" class="brand-logo">
+        <i class="app-icon material-icons">child_care</i>
+        Sorting Hat
+      </a>
+    </div>
+    <div class="col 8">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li><%= link_to :invitations, invitations_path %></li>
+          <li>
+            <a class="dropdown-button" href="#" data-activates="user_dropdown">
+              <%= current_user.email %>
+              <i class="material-icons right">arrow_drop_down</i>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if notice %>
+  <p id="notice" class="success"><%= notice %></p>
+<% end %>

@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+@import "materialize/components/color";
+$primary-color: color("blue-grey", "darken-4") !default;
+$secondary-color: color("blue", "lighten-2") !default;
+@import 'materialize';
+
+#error_explanation {
+  @extend .red, .lighten-1;
+  color: #FFF;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  ul {
+    margin: 5px 0 0 0;
+  }
+}
+
+.success {
+  @extend .green, .lighten-2;
+  border-radius: 6px;
+  padding: 5px;
+  color: #FFF;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 1px solid color("green", "base");
+  font-weight: bold;
+}

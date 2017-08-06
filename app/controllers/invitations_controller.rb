@@ -7,11 +7,6 @@ class InvitationsController < ApplicationController
     @invitations = Invitation.all
   end
 
-  # GET /invitations/1
-  # GET /invitations/1.json
-  def show
-  end
-
   # GET /invitations/new
   def new
     @invitation = Invitation.new
@@ -26,28 +21,20 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
 
-    respond_to do |format|
-      if @invitation.save
-        format.html { redirect_to @invitation, notice: 'Invitation was successfully created.' }
-        format.json { render :show, status: :created, location: @invitation }
-      else
-        format.html { render :new }
-        format.json { render json: @invitation.errors, status: :unprocessable_entity }
-      end
+    if @invitation.save
+      redirect_to invitations_path, notice: 'Invitation was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /invitations/1
   # PATCH/PUT /invitations/1.json
   def update
-    respond_to do |format|
-      if @invitation.update(invitation_params)
-        format.html { redirect_to @invitation, notice: 'Invitation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @invitation }
-      else
-        format.html { render :edit }
-        format.json { render json: @invitation.errors, status: :unprocessable_entity }
-      end
+    if @invitation.update(invitation_params)
+      redirect_to invitations_path, notice: 'Invitation was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -55,10 +42,7 @@ class InvitationsController < ApplicationController
   # DELETE /invitations/1.json
   def destroy
     @invitation.destroy
-    respond_to do |format|
-      format.html { redirect_to invitations_url, notice: 'Invitation was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to invitations_url, notice: 'Invitation was successfully destroyed.'
   end
 
   private

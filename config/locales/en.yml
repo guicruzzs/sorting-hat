@@ -1,4 +1,4 @@
 en:
   errors:
     messages:
-      has_no_invitation: "Sorry, there's no invitation yet. Talk to the admin :)"
+      has_no_invitation: "has not sent yet. Talk to the admin :)"

@@ -1,12 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="valign-wrapper">
+  <div class="col s9">
+    <h4>Invitations</h4>
+  </div>
+  <div class="col s3 right-align">
+    <%= link_icon_to :add, 'New Invitation', new_invitation_path %>
+  </div>
+</div>
 
-<h1>Invitations</h1>
-
-<table>
+<table class="striped">
   <thead>
     <tr>
       <th>Email</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -14,14 +19,11 @@
     <% @invitations.each do |invitation| %>
       <tr>
         <td><%= invitation.email %></td>
-        <td><%= link_to 'Show', invitation %></td>
-        <td><%= link_to 'Edit', edit_invitation_path(invitation) %></td>
-        <td><%= link_to 'Destroy', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="right-align">
+          <%= link_to_edit edit_invitation_path(invitation) %>
+          <%= link_to_destroy invitation %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Invitation', new_invitation_path %>
