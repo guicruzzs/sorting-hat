@@ -13,6 +13,7 @@
     <div class="col 8">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
+          <li><%= link_to :tracks, tracks_path %></li>
           <li><%= link_to :invitations, invitations_path %></li>
           <li>
             <a class="dropdown-button" href="#" data-activates="user_dropdown">

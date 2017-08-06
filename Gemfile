@@ -12,11 +12,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3'
 
 gem 'devise', '~> 4.3'
+gem 'rspotify', '~> 1.23'
 gem 'materialize-sass', '~> 0.100'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
 end
