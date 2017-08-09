@@ -16,6 +16,10 @@
     <%= form.text_field :email, id: :invitation_email %>
   </div>
 
+  <% if ['edit', 'update'].include?(params[:action]) %>
+    <%= link_to_cancel invitations_path %>
+  <% end %>
+
   <button class="btn waves-effect waves-light" type="submit" name="action">Save
     <i class="material-icons right">send</i>
   </button>

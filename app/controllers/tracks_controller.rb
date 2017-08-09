@@ -4,7 +4,7 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    @tracks = Track.order('id DESC')
   end
 
   # GET /tracks/1
@@ -17,37 +17,14 @@ class TracksController < ApplicationController
     @track = Track.new
   end
 
-  # GET /tracks/1/edit
-  def edit
-  end
-
   # POST /tracks
   # POST /tracks.json
   def create
     @track = Track.new(track_params)
-
-    respond_to do |format|
-      if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
-        format.json { render :show, status: :created, location: @track }
-      else
-        format.html { render :new }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /tracks/1
-  # PATCH/PUT /tracks/1.json
-  def update
-    respond_to do |format|
-      if @track.update(track_params)
-        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
-        format.json { render :show, status: :ok, location: @track }
-      else
-        format.html { render :edit }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
-      end
+    if @track.save
+      redirect_to @track, notice: 'Track was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -55,10 +32,12 @@ class TracksController < ApplicationController
   # DELETE /tracks/1.json
   def destroy
     @track.destroy
-    respond_to do |format|
-      format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tracks_url, notice: 'Track was successfully destroyed.'
+  end
+
+  def search_on_spotify
+    @tracks = SpotifyTrackSearcher.call(params[:keyword])
+    render layout: false
   end
 
   private

@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Spotify:</strong>
-  <%= @track.spotify_id %>
+  </br>
+  <%= spotify_track_iframe @track.spotify_id %>
 </p>
 
 <p>
@@ -15,5 +14,4 @@
   <%= @track.artist %>
 </p>
 
-<%= link_to 'Edit', edit_track_path(@track) %> |
-<%= link_to 'Back', tracks_path %>
+<%= link_icon_to :arrow_back, 'Back', root_path %>

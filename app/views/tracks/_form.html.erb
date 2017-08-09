@@ -1,3 +1,6 @@
+<% text_field_tag :keyword %>
+<input type="text" name="keyword" id="keyword" placeholder="Search a song...">
+
 <%= form_with(model: track, local: true) do |form| %>
   <% if track.errors.any? %>
     <div id="error_explanation">
@@ -11,22 +14,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :spotify_id %>
-    <%= form.number_field :spotify_id, id: :track_spotify_id %>
+  <div id="track_options">
+    <%= form.hidden_field :spotify_id, id: :track_spotify_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :track_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :artist %>
-    <%= form.text_field :artist, id: :track_artist %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </br>
+  <button class="btn waves-effect waves-light right-align" type="submit" name="action">Send
+    <i class="material-icons right">send</i>
+  </button>
 <% end %>
+
+<script type="text/javascript">
+$( document ).ready(function(){
+  var last_keyword = "";
+
+  $("#keyword").keyup(function(){
+    var current_keyword = $("#keyword").val();
+    if(current_keyword != last_keyword && current_keyword.length > 3){
+      last_keyword = current_keyword;
+      load_options(current_keyword);
+    }
+  });
+
+  function load_options(keyword){
+    $.ajax( "/tracks/search_on_spotify?keyword=" + keyword )
+      .done(function(response) {
+        $("#track_options").html(response)
+      })
+      .fail(function(response) {
+        console.log( "error" );
+        console.log(response);
+      })
+  }
+
+});
+</script>

@@ -1,0 +1,11 @@
+<% @tracks.each do |track| %>
+  <p class="radio_option">
+    <span>
+      <%= radio_button_tag('track[spotify_id]', track.id) %>
+      <label for="track_spotify_id_<%= track.id %>"></label>
+    </span>
+    <span>
+      <%= spotify_track_iframe track.id %>
+    </span>
+  </p>
+<% end %>
