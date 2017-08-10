@@ -1,1 +1,26 @@
-Welcome to the Jungle :)
+<div class="row">
+  <div class="col s9">
+    <h5 class="center-align"><strong>Suggested Songs</strong></h5>
+    <% @tracks.each do |track| %>
+        <div class="col s4">
+          <div class="card green">
+            <div class="card-content white-text">
+              <span class="card-title"><%= truncate(track.name, length: 20) %></span>
+              <p><%= spotify_track_iframe track.spotify_id %></p>
+            </div>
+            <div class="card-action center-align">
+              <%= render partial: 'ratings/form', locals: {track_id: track.id, score: track.score} %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class="col s3">
+    <h5 class="center-align"><strong>Top 10</strong></h5>
+    <% @ranking_tracks.each do |ranking_track| %>
+      <p class="center-align">
+        <%= spotify_track_iframe ranking_track.spotify_id %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -7,12 +7,12 @@ input.star { display: none !important; }
 
 label.star {
   float: right !important;
-  padding: 10px !important;
+  padding: 0 !important;
   font-size: 25px !important;
   color: #444 !important;
   transition: all .2s !important;
   height: 35px !important;
-  width: 25px !important;
+  width: 26px !important;
 }
 
 input.star:checked ~ label.star:before {

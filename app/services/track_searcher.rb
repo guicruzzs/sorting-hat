@@ -10,7 +10,7 @@ class TrackSearcher
 
     tracks.map do |track|
       rating = ratings.find{|rating| rating.track_id == track.id}
-      TrackRatingPresenter.new(track, rating, average_ratings[track.id])
+      TrackRatingPresenter.new(track, rating, average_ratings[track.id].to_f)
     end
   end
 
