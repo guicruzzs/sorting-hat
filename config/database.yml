@@ -13,4 +13,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: soritng_hat
+  pool: 10
+  timeout: 5000
+  host: 172.17.0.2
+  username: postgres
+  password: postgres
+
