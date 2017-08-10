@@ -13,19 +13,31 @@
       <th>Spotify</th>
       <th>Name</th>
       <th>Artist</th>
+      <th>Rating</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tracks.each do |track| %>
       <tr>
-        <td><%= track.spotify_id %></td>
+        <td><%= spotify_track_iframe track.spotify_id %></td>
         <td><%= track.name %></td>
         <td><%= track.artist %></td>
+        <td class="center-align">
+          <strong><%= track.average_score %></strong></br>
+          <%= render partial: 'ratings/form', locals: {track_id: track.id, score: track.score} %>
+        </td>
         <td class="right-align">
-          <%= link_to_destroy track %>
+          <%= link_to_destroy(action: 'destroy', id: track.id) %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= render partial: 'layouts/pagination',
+  locals: {
+    current_page: @pagination[:current_page],
+    total_pages: @pagination[:total_pages],
+    base_url: tracks_path} %>

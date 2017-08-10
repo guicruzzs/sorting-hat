@@ -1,0 +1,35 @@
+div.stars {
+  width: 130px !important;
+  display: inline-block !important;
+}
+
+input.star { display: none !important; }
+
+label.star {
+  float: right !important;
+  padding: 10px !important;
+  font-size: 25px !important;
+  color: #444 !important;
+  transition: all .2s !important;
+  height: 35px !important;
+  width: 25px !important;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005' !important;
+  color: #FE7 !important;
+  text-shadow: 0 0 20px #952 !important;
+  transition: all .25s !important;
+}
+
+label.star:hover { transform: scale(1.3) !important; }
+
+label.star:before {
+  content: '\f006' !important;
+  font-family: FontAwesome !important;
+  border: none !important;
+}
+
+label.star:after {
+  display: none !important;
+}

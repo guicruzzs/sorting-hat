@@ -4,7 +4,8 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.order('id DESC')
+    @tracks = TrackSearcher.call(current_user.id, params[:page])
+    @pagination = TrackSearcher.get_pagination(params[:page])
   end
 
   # GET /tracks/1

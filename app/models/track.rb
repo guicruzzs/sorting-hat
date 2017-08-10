@@ -1,6 +1,8 @@
 class Track < ApplicationRecord
   validates :spotify_id, presence: true, uniqueness: true
 
+  has_many :ratings, dependent: :destroy
+
   before_validation :load_track_data_from_spotify
 
   def load_track_data_from_spotify

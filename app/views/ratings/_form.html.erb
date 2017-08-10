@@ -1,0 +1,18 @@
+<div class="stars">
+  <%= form_tag(ratings_path,
+    remote: true,
+    authenticity_token: true,
+    onchange: "document.getElementById('button_#{track_id}').click()") do |form| %>
+
+    <%= hidden_field_tag 'rating[track_id]', track_id %>
+
+    <% (1..5).reverse_each do |i| %>
+      <%= radio_button_tag('rating[score]', i, score == i,
+        {class: "star star-#{i}", id: "#{track_id}-star-#{i}"}) %>
+
+      <%= label_tag("#{track_id}-star-#{i}", "", {class: "star star-#{i}"}) %>
+    <% end %>
+
+    <%= submit_tag "go", id: "button_#{track_id}", style: 'display: none;' %>
+  <% end %>
+</div>

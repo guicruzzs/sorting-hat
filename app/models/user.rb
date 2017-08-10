@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   validate :has_invitation
 
+  has_many :ratings
+
   def has_invitation
     return unless email.present?
     if Invitation.where(email: email).count.zero?

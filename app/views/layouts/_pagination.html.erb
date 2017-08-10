@@ -1,0 +1,23 @@
+<div class="row center-align">
+  <ul class="pagination">
+    <li class="<%= (current_page == 1) ? 'disabled' : 'waves-effect' %>">
+      <a href="<%= (current_page == 1) ? '#' : "#{base_url}?page=#{current_page - 1}" %>">
+        <i class="material-icons">chevron_left</i>
+      </a>
+    </li>
+
+    <% (1..total_pages).each do |i| %>
+      <li class="<%= 'active' if current_page == i %>">
+        <a href="<%= (current_page == i) ? '#' : "#{base_url}?page=#{i}" %>">
+          <%= i %>
+        </a>
+      </li>
+    <% end %>
+
+    <li class="<%= (current_page == total_pages) ? 'disabled' : 'waves-effect' %>">
+      <a href="<%= (current_page == total_pages) ? '#' : "#{base_url}?page=#{current_page + 1}" %>">
+        <i class="material-icons">chevron_right</i>
+      </a>
+    </li>
+  </ul>
+</div>
