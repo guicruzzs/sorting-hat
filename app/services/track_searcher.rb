@@ -17,7 +17,7 @@ class TrackSearcher
   def self.call_not_evaluated_preferably(user_id)
     tracks = Track
       .joins("LEFT JOIN ratings ON ratings.track_id = tracks.id AND ratings.user_id = #{user_id}")
-      .order('ratings.id').limit(LIMIT_RESULTS)
+      .order('ratings.id DESC').limit(LIMIT_RESULTS)
 
     track_ids = tracks.map(&:id)
     ratings = Rating.where(track_id: track_ids, user_id: user_id)
