@@ -5,4 +5,8 @@ class HomeController < ApplicationController
 
     render layout: 'home_dashboard'
   end
+
+  def ranking
+    @tracks = RankingGetter.call(nil)
+  end
 end

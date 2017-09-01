@@ -1,6 +1,6 @@
 class RankingGetter
-  def self.call
-    average_ratings = Rating.group(:track_id).order('average_score DESC').limit(10).average(:score)
+  def self.call(limit = 10)
+    average_ratings = Rating.group(:track_id).order('average_score DESC').limit(limit).average(:score)
     tracks = Track.where(id: average_ratings.keys)
 
     tracks.map do |track|

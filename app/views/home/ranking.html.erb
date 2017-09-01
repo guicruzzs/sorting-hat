@@ -1,0 +1,21 @@
+<div class="valign-wrapper">
+  <div class="col s12 center-align">
+    <h4>Ranking</h4>
+  </div>
+</div>
+
+<table class="striped">
+  <tbody>
+    <% @tracks.each_with_index do |track, index| %>
+      <tr>
+        <td><h5><%= index + 1 %></h5></td>
+        <td><%= spotify_track_iframe track.spotify_id %></td>
+        <td><%= track.name %> - <%= track.artist %></td>
+        <td class="center-align">
+          <i class="material-icons">star_border</i></br>
+          <strong><%= track.average_score %></strong>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

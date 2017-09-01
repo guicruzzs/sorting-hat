@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'home#index'
+  get :ranking, to: 'home#ranking'
 
   devise_for :users
 
