@@ -1,0 +1,4 @@
+# to load this file:
+# eval "$(cat .environment_vars)"
+export SPOTIFY_CLIENT_ID=94cfd1f3fb22f71cea1afbf02b460c6d1d
+export SPOTIFY_CLIENT_SECRET=b530a13e45914982b79f9b7e3fba994cfd1f3fb22f71c
