@@ -23,6 +23,7 @@ group :development, :test do
   gem 'pry'
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
 end
 
 group :development do
