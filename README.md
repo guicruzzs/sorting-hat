@@ -1,6 +1,6 @@
 # Sorting Hat app
 
-This is an app to help manage your band and you choose your setlist.
+This is an app to help you manage your band setlist.
 
 ### Installing dependencies
 
